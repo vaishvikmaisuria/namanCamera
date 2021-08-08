@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import {RNCamera} from 'react-native-camera';
-
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {TouchableOpacity, Alert, StyleSheet} from 'react-native';
 
@@ -14,30 +13,28 @@ export default class Camera extends PureComponent {
     };
   }
 
-  takePicture = async () => {
-    if (this.camera && !this.state.takingPic) {
-      let options = {
-        quality: 0.85,
-        fixOrientation: true,
-        forceUpOrientation: true,
-      };
+  // takePicture = async () => {
+  //   if (this.camera && !this.state.takingPic) {
+  //     let options = {
+  //       quality: 0.85,
+  //       fixOrientation: true,
+  //       forceUpOrientation: true,
+  //     };
 
-      this.setState({takingPic: true});
+  //     this.setState({takingPic: true});
 
-      try {
-        const data = await this.camera.takePictureAsync(options);
-        this.setState({takingPic: false}, () => {
-          this.props.onPicture(data);
-        });
-      } catch (err) {
-        this.setState({takingPic: false});
-        Alert.alert('Error', 'Failed to take picture: ' + (err.message || err));
-        return;
-      }
-    }
-  };
-
-  
+  //     try {
+  //       const data = await this.camera.takePictureAsync(options);
+  //       this.setState({takingPic: false}, () => {
+  //         this.props.onPicture(data);
+  //       });
+  //     } catch (err) {
+  //       this.setState({takingPic: false});
+  //       Alert.alert('Error', 'Failed to take picture: ' + (err.message || err));
+  //       return;
+  //     }
+  //   }
+  // };
 
   render() {
     return (
@@ -59,8 +56,9 @@ export default class Camera extends PureComponent {
         <TouchableOpacity
           activeOpacity={0.5}
           style={styles.btnAlignment}
-          onPress={this.takePicture}>
-          <Icon name="camera" size={50} color="#fff" />
+          // onPress={this.takePicture}
+        >
+          {/* <Icon name="camera" size={50} color="#fff" /> */}
         </TouchableOpacity>
       </RNCamera>
     );
